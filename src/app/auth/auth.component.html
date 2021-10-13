@@ -1,0 +1,4 @@
+<div class="container">
+    <button class="btn btn-success" (click)='signIn()'*ngIf='!this.isAuth'>Se connecter </button>
+    <button class="btn btn-danger" (click)='signOut()' *ngIf='this.isAuth' >Se déconnecter</button>
+</div>
