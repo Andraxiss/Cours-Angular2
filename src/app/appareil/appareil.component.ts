@@ -4,39 +4,38 @@ import { AppareilService } from '../services/appareil-services';
 @Component({
   selector: 'app-appareil',
   templateUrl: './appareil.component.html',
-  styleUrls: ['./appareil.component.scss']
+  styleUrls: ['./appareil.component.scss'],
 })
 export class AppareilComponent implements OnInit {
+  constructor(private appareilService: AppareilService) {}
 
-  constructor(private appareilService: AppareilService) { }
+  @Input() appareilName: string = '';
 
-  @Input() appareilName: string = "";
-
-  @Input() appareilStatus: string = "";
+  @Input() appareilStatus: string = '';
 
   @Input() appareilIndex: number = 0;
 
-  ngOnInit(): void {
-  }
+  @Input() id: number = 0;
+
+  ngOnInit(): void {}
 
   getStatus() {
     return this.appareilStatus;
   }
 
   getColor() {
-    if (this.appareilStatus === "éteint") {
+    if (this.appareilStatus === 'éteint') {
       return 'red';
     } else {
       return 'green';
     }
   }
 
-  onAllumerOne(){
+  onAllumerOne() {
     this.appareilService.switchOnOne(this.appareilIndex);
   }
 
-  onEteindreOne(){
+  onEteindreOne() {
     this.appareilService.switchOffOne(this.appareilIndex);
   }
-
 }
